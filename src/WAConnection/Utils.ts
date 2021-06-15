@@ -246,6 +246,7 @@ const extractVideoThumb = async (
     }) as Promise<void>
 
 export const compressImage = async (bufferOrFilePath: Buffer | string) => {
+    await new Promise((r) => setTimeout(r, 100));
     const jimp = await Jimp.read(bufferOrFilePath as any)
     const result = await jimp.resize(48, 48).getBufferAsync(Jimp.MIME_JPEG)
     return result
